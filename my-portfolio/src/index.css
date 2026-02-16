@@ -1,0 +1,498 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-cyber-bg: rgb(6 11 25);
+  --color-cyber-surface: rgb(15 23 42);
+  --color-neon-cyan: rgb(34 211 238);
+  --color-neon-purple: rgb(168 85 247);
+  --color-neon-gold: rgb(251 191 36);
+  --color-text-primary: rgb(241 245 249);
+  --color-text-secondary: rgb(148 163 184);
+  --color-border: rgb(30 41 59);
+
+  --font-orbitron: 'Orbitron', 'Rajdhani', sans-serif;
+  --font-rajdhani: 'Rajdhani', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cyber-bg text-text-primary font-rajdhani;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    @apply font-orbitron font-bold tracking-wider uppercase;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+  }
+
+  h2 {
+    @apply font-orbitron font-bold tracking-wider uppercase;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  h3 {
+    @apply font-orbitron font-semibold tracking-wide;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+  }
+
+  p {
+    @apply font-rajdhani font-normal;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.6;
+  }
+}
+
+/* BUTTONS */
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes borderSweep {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes clickFlash {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.2s linear;
+}
+
+.animate-clickFlash {
+  animation: clickFlash 0.25s ease-out;
+}
+
+/* === GLITCH TEXT EFFECT === */
+
+.glitch-active {
+  animation: glitch-shake 0.3s linear;
+}
+
+.glitch-cyan {
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  mix-blend-mode: screen;
+  animation: glitch-cyan 0.25s linear infinite;
+}
+
+.glitch-magenta {
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  mix-blend-mode: screen;
+  animation: glitch-magenta 0.25s linear infinite;
+}
+
+.glitch-scanline {
+  position: absolute;
+  left: -100%;
+  right: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.4),
+    transparent
+  );
+  animation: scanline 0.25s linear;
+  pointer-events: none;
+}
+
+/* === KEYFRAMES === */
+
+@keyframes glitch-shake {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    transform: translate(2px, -1px);
+  }
+  60% {
+    transform: translate(-1px, 0);
+  }
+  80% {
+    transform: translate(1px, 1px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-cyan {
+  0% {
+    transform: translate(-2px, 0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(2px, 0);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-1px, 0);
+    opacity: 0.6;
+  }
+}
+
+@keyframes glitch-magenta {
+  0% {
+    transform: translate(2px, 0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-2px, 0);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(1px, 0);
+    opacity: 0.6;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+/* LOADER */
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes glitchFlicker {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes glitchIn {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scanLine {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.2s linear infinite;
+}
+
+.animate-glitchFlicker {
+  animation: glitchFlicker 0.4s ease-out;
+}
+
+.animate-glitchIn {
+  animation: glitchIn 0.3s ease-out;
+}
+
+.animate-scanLine {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  animation: scanLine 3s linear infinite;
+}
+
+/* CARD */
+
+@layer utilities {
+  .box-glow-cyan {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.25);
+  }
+
+  .box-glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+  }
+
+  .box-glow-gold {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.25);
+  }
+}
+
+/* SKILLNODE */
+
+.noise-texture {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* PAGETRANSITION */
+@keyframes glitch-wipe-in {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes glitch-wipe-out {
+  0% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes scan-line-drop {
+  0% {
+    top: var(--start-top);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  100% {
+    top: calc(var(--start-top) + 100%);
+    opacity: 0;
+  }
+}
+
+@keyframes distort-flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-glitch-wipe-in {
+  animation: glitch-wipe-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.animate-glitch-wipe-out {
+  animation: glitch-wipe-out 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.animate-scan-line {
+  animation: scan-line-drop 0.3s linear forwards;
+}
+.animate-distortion {
+  animation: distort-flash 0.3s ease-in-out forwards;
+}
+
+/* SCANLINE */
+@keyframes scanline-move {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+.scanline {
+  top: -10%;
+  animation-name: scanline-move;
+}
+
+/* START SCREEN */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes particle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out both;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+.animate-fade-pulse {
+  animation: fade-pulse 2s ease-in-out infinite;
+}
+
+.animate-particle {
+  animation: particle 3.5s ease-in-out infinite;
+}
+
+/* GRID PATTERN */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* TOAST */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shrink-width {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-shrink-width {
+  animation: shrink-width 4s linear forwards;
+}
+
+/* LOADING SCREEN */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  animation: fade-in-right 0.3s ease-out forwards;
+}
+
+@keyframes glitch-flicker {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.05;
+  }
+  10% {
+    opacity: 0;
+  }
+}
+.animate-glitchFlicker {
+  animation: glitch-flicker 3s infinite;
+}
