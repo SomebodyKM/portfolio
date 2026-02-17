@@ -139,6 +139,50 @@ const SkillTree = () => {
           </div>
         </div>
 
+        {/* Mobile view */}
+        <div className="md:hidden space-y-6">
+          {/* Frontend category */}
+          <div className="bg-cyber-surface/40 backdrop-blur-sm border border-neon-cyan/30 rounded-lg p-6 space-y-4">
+            <h3 className="font-orbitron font-bold text-neon-cyan mb-4 tracking-wider border-b border-neon-cyan/20 pb-2">
+              Frontend Development
+            </h3>
+
+            <div className="grid grid-cols-2 gap-4">
+              <SkillNode name="HTML" status="unlocked" size="small" />
+              <SkillNode name="CSS" status="unlocked" size="small" />
+              <SkillNode name="JavaScript" status="unlocked" size="small" />
+              <SkillNode name="React" status="learning" size="small" />
+              <SkillNode name="Next.js" status="learning" size="small" />
+            </div>
+          </div>
+
+          {/* Backend category */}
+          <div className="bg-cyber-surface/40 backdrop-blur-sm border border-neon-purple/30 rounded-lg p-6 space-y-4">
+            <h3 className="font-orbitron font-bold text-neon-purple mb-4 tracking-wider border-b border-neon-purple/20 pb-2">
+              Backend Development
+            </h3>
+
+            <div className="grid grid-cols-2 gap-4">
+              <SkillNode name="Node.js" status="learning" size="small" />
+              <SkillNode name="TypeScript" status="learning" size="small" />
+              <SkillNode name="GraphQL" status="learning" size="small" />
+            </div>
+          </div>
+
+          {/* DevOps & Tools category */}
+          <div className="bg-cyber-surface/40 backdrop-blur-sm border border-neon-gold/30 rounded-lg p-6 space-y-4">
+            <h3 className="font-orbitron font-bold text-neon-gold mb-4 tracking-wider border-b border-neon-gold/20 pb-2">
+              DevOps & Tools
+            </h3>
+
+            <div className="grid grid-cols-2 gap-4">
+              <SkillNode name="Testing" status="learning" size="small" />
+              <SkillNode name="Docker" status="locked" size="small" />
+              <SkillNode name="AWS" status="locked" size="small" />
+            </div>
+          </div>
+        </div>
+
         {/* Legend */}
         <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm font-mono font-semibold tracking-wide">
           <div className="flex items-center gap-2">
