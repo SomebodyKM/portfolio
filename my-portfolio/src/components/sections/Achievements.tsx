@@ -77,7 +77,7 @@ const Achievements = () => {
         {/* Title */}
         <GlitchText>
           <h2 className="mb-12 text-center text-3xl md:text-5xl font-orbitron font-bold drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] uppercase tracking-wide">
-            Player Profile
+            Achievements
           </h2>
         </GlitchText>
 

@@ -190,7 +190,7 @@ const ContactGuild = () => {
 
               <div className="space-y-6">
                 <a
-                  href="mailto:kuomy105@gmail.com"
+                  href="mailto:miya3927@gmail.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block group"
